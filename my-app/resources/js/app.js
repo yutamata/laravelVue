@@ -1,6 +1,8 @@
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import TaskListComponent from "./components/TaskListComponent";
+import TaskShowComponent from "./components/TaskShowComponent";
+import TaskCreateComponent from "./components/TaskCreateComponent";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,6 +22,18 @@ const router = new VueRouter({
             name: 'task.list',
             component: TaskListComponent
         },
+
+        {
+            path: '/tasks/:taskId',
+            name: 'task.show',
+            component: TaskShowComponent,
+            props: true
+        },
+        {
+            path: '/tasks/create',
+            name: 'task.create',
+            component: TaskCreateComponent
+        },
     ]
 });
 
@@ -34,7 +48,6 @@ const router = new VueRouter({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 
 /**
